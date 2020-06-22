@@ -6,17 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    <input id='city' placeholder="e.g New York">
-    <button id='button'>Search</button>
-
-    <div>
-        <button>C</button>
-        <label class="switch">
-            <input id='switch' type="checkbox">
-            <span class="slider round"></span>
-        </label>
-        <button>F</button>
+    <div class="searchBar">
+        <input id='city' placeholder="e.g New York">
+        <button id='button'>Search</button>
     </div>
+
+    <div class="wrapper">
+        <div id='div'></div>
+        <div class="degSwitch">
+            <div>°C</div>
+            <label class="switch">
+                <input id='switch' type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <div>°F</div>
+        </div>
+    </div>
+    
 </body>
 <script src='script.js'></script>
 </html>

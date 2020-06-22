@@ -1,3 +1,9 @@
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 let city = 'London';
 let newCity = document.getElementById('city');
 let button = document.getElementById('button');
@@ -7,8 +13,9 @@ let temp = document.createElement('h3');
 let desc = document.createElement('h3');
 let wind = document.createElement('h3');
 let hum = document.createElement('h3');
-let deg = ' °C';
-let tempVal; 
+let div = document.getElementById('div');
+let innerDiv = document.createElement('div');
+let tempVal;
 
 let checkFetch = function(response) {
     if (!response.ok) {
@@ -22,15 +29,15 @@ let updateData = function(data) {
     title.innerHTML = data.name;
     tempVal = data.main.temp;
     if (degSwitch.checked) {
-        temp.innerHTML = (((tempVal - 273.15) * 9 / 5 ) + 32).toFixed(1);
+        temp.innerHTML = 'Temperature: ' + (((tempVal - 273.15) * 9 / 5 ) + 32).toFixed(1) + ' °F';
     } else {
-        temp.innerHTML = (tempVal - 273.15).toFixed(1);
+        temp.innerHTML = 'Temperature: ' + (tempVal - 273.15).toFixed(1) + ' °C';
     }
-    desc.innerHTML = data.weather[0].main;
-    wind.innerHTML = data.wind.speed;
-    hum.innerHTML = data.main.humidity;
-    console.log(data);
-    document.body.append(title, temp, desc, wind, hum);
+    desc.innerHTML = 'Description: ' + data.weather[0].main;
+    wind.innerHTML = 'Wind Speed: ' + data.wind.speed+ ' km/h';
+    hum.innerHTML = 'Humidity: ' + data.main.humidity + '%';
+    innerDiv.append(title, temp, desc, wind, hum);
+    div.append(innerDiv);
 }
 
 let fetchCity = function() {
